@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de"></html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamischer Seitentitel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    pre {
+      background-color: #f4f4f4;
+      border: 1px solid #ddd;
+      padding: 10px;
+      overflow: auto;
+    }
+    code {
+      font-family: "Courier New", Courier, monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dynamischer Seitentitel bei Sichtbarkeitsänderung</h1>
+  <p>Dieses Projekt ändert den Seitentitel dynamisch, wenn der Benutzer die Tabs wechselt oder die Sichtbarkeit des Dokuments ändert.</p>
+  
+  <h2>Wie es funktioniert</h2>
+  <p>Das JavaScript hört auf das <code>visibilitychange</code>-Ereignis und wechselt den Dokumenttitel, wenn die Seite nicht sichtbar ist.</p>
+  
+  <h2>Code</h2>
+  <pre>
+<code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;de&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Dynamischer Seitentitel&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;script&gt;
+    let intervalId;
+
+    document.addEventListener(&#39;visibilitychange&#39;, () =&gt; {
+      if (document.hidden) {
+        intervalId = setInterval(() =&gt; {
+          document.title = document.title === &#39;Dynamischer Seitentitel&#39; ? &#39;Dynamischer Titel&#39; : &#39;Dynamischer Seitentitel&#39;;
+        }, 2000);
+      } else {
+        clearInterval(intervalId);
+        document.title = &#39;Dynamischer Seitentitel&#39;;
+      }
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code>
+  </pre>
+
+  <h2>Funktionen</h2>
+  <ul>
+    <li>Ändert den Dokumenttitel basierend auf der Sichtbarkeit</li>
+    <li>Wechselt alle 2 Sekunden zwischen "Dynamischer Seitentitel" und "Dynamischer Titel", wenn die Seite nicht sichtbar ist</li>
+    <li>Setzt den Titel auf "Dynamischer Seitentitel" zurück, wenn die Seite wieder sichtbar ist</li>
+  </ul>
+
+  <h2>Verwendung</h2>
+  <ol>
+    <li>Öffnen Sie diese HTML-Datei in einem Browser.</li>
+    <li>Wechseln Sie zu einem anderen Tab oder minimieren Sie den Browser, um die Titeländerung zu sehen.</li>
+  </ol>
+  
+  <h2>Lizenz</h2>
+  <p>Dieses Projekt ist unter der MIT-Lizenz lizenziert.</p>
+  <script>
+    let intervalId;
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        intervalId = setInterval(() => {
+          document.title = document.title === 'Dynamischer Seitentitel' ? 'Dynamischer Titel' : 'Dynamischer Seitentitel';
+        }, 2000);
+      } else {
+        clearInterval(intervalId);
+        document.title = 'Dynamischer Seitentitel';
+      }
+    });
+  </script>
+</body>
+</html>
